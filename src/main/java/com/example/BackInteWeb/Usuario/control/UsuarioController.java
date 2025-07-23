@@ -29,7 +29,7 @@ public class UsuarioController {
         return usuarioService.UsuarioById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("/crear")
     public ResponseEntity<Message> crear(@Validated({UsuarioDTO.Register.class, Default.class}) @RequestBody UsuarioDTO usuarioDTO) {
         return usuarioService.crear(usuarioDTO);
     }
