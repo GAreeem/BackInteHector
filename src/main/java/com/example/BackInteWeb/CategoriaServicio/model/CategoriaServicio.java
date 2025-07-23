@@ -9,8 +9,8 @@ public class CategoriaServicio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCategoriaServicio;
 
-    @Column(name = "nommbre", columnDefinition = "VARCHAR(100)")
-    private String nommbre;
+    @Column(name = "nombre", columnDefinition = "VARCHAR(100)")
+    private String nombre;
 
     @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
@@ -20,15 +20,15 @@ public class CategoriaServicio {
 
     public CategoriaServicio() {}
 
-    public CategoriaServicio(Long idCategoriaServicio, String nommbre, String descripcion, boolean status) {
-        this.idCategoriaServicio = idCategoriaServicio;
-        this.nommbre = nommbre;
+    public CategoriaServicio(String nombre, String descripcion, boolean status) {
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.status = status;
     }
 
-    public CategoriaServicio(String nommbre, String descripcion, boolean status) {
-        this.nommbre = nommbre;
+    public CategoriaServicio(Long idCategoriaServicio, String nombre, String descripcion, boolean status) {
+        this.idCategoriaServicio = idCategoriaServicio;
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.status = status;
     }
@@ -41,12 +41,12 @@ public class CategoriaServicio {
         this.idCategoriaServicio = idCategoriaServicio;
     }
 
-    public String getNommbre() {
-        return nommbre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNommbre(String nommbre) {
-        this.nommbre = nommbre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
