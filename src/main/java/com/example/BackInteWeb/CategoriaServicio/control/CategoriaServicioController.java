@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/categoria")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CategoriaServicioController {
 
     private final CategoriaServicioServices categoriaServicioServices;
@@ -37,5 +38,14 @@ public class CategoriaServicioController {
     @PutMapping("/{id}")
     public ResponseEntity<Message> actualizarCategoria(@Validated({CategoriaServicioDTO.Register.class, Default.class}) @RequestBody CategoriaServicioDTO categoriaServicioDTO) {
         return categoriaServicioServices.actualizarCategoria(categoriaServicioDTO);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Message> eliminar(@PathVariable Long id) {
+        return categoriaServicioServices.eliminar(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/restaurar/{id}")
+    public ResponseEntity<Message> restaurar(@PathVariable Long id) {
+        return categoriaServicioServices.restaurar(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 }

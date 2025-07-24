@@ -118,4 +118,24 @@ public class CategoriaServicioServices {
         return new ResponseEntity<>(new Message(categoriaServicio,"La categoria de servicios se actualizó correctamente",TypesResponse.SUCCESS),HttpStatus.OK);
     }
 
+    public boolean eliminar (Long id) {
+        CategoriaServicio categoriaServicio = categoriaRepository.findById(id).orElse(null);
+        if (categoriaServicio != null) {
+            categoriaServicio.setStatus(false);
+            categoriaRepository.save(categoriaServicio);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean restaurar(Long id) {
+        CategoriaServicio categoriaServicio = categoriaRepository.findById(id).orElse(null);
+        if (categoriaServicio != null) {
+            categoriaServicio.setStatus(true);
+            categoriaRepository.save(categoriaServicio);
+            return true;
+        }
+        return false;
+    }
+
 }

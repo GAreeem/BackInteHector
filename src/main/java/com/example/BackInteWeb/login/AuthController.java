@@ -42,7 +42,7 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
         }
 
-        String rol = usuario.getRol().getRol(); // Por ejemplo: "ADMIN", "USUARIO", "CLIENTE"
+        String rol = usuario.getRol().getRol();
 
         return ResponseEntity.ok(new AuthResponse(token, rol));
     }
