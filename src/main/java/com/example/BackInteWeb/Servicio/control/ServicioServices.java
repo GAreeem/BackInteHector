@@ -93,7 +93,7 @@ public class ServicioServices {
                 dto.getNombre(),
                 dto.getDescripcion(),
                 dto.getPrecio(),
-                true,
+                false,
                 categoria.get()
         );
 
@@ -137,4 +137,56 @@ public class ServicioServices {
         logger.info("Servicio con ID {} actualizado correctamente", dto.getIdServicio());
         return new ResponseEntity<>(new Message(servicio, "Servicio actualizado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
+
+    @Transactional
+    public ResponseEntity<Message> desactivarServicio(Long idServicio) {
+        Optional<Servicio> servicioOptional = servicioRepository.findById(idServicio);
+        if (servicioOptional.isEmpty()) {
+            logger.warn("Servicio con ID {} no encontrado para desactivación", idServicio);
+            return new ResponseEntity<>(new Message("Servicio no encontrado", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+
+        Servicio servicio = servicioOptional.get();
+        servicio.setStatus(false);
+        servicioRepository.save(servicio);
+        logger.info("Servicio con ID {} desactivado correctamente", idServicio);
+        return new ResponseEntity<>(new Message("Servicio desactivado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+    @Transactional
+    public ResponseEntity<Message> reactivarServicio(Long idServicio) {
+        Optional<Servicio> servicioOptional = servicioRepository.findById(idServicio);
+        if (servicioOptional.isEmpty()) {
+            logger.warn("Servicio con ID {} no encontrado para reactivación", idServicio);
+            return new ResponseEntity<>(new Message("Servicio no encontrado", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+
+        Servicio servicio = servicioOptional.get();
+        servicio.setStatus(true);
+        servicioRepository.save(servicio);
+        logger.info("Servicio con ID {} reactivado correctamente", idServicio);
+        return new ResponseEntity<>(new Message("Servicio reactivado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> serviciosActivos() {
+        List<Servicio> activos = servicioRepository.findByStatusTrue();
+        if (activos.isEmpty()) {
+            logger.warn("No hay servicios activos");
+            return new ResponseEntity<>(new Message(null, "No hay servicios activos", TypesResponse.WARNING), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new Message(activos, "Lista de servicios activos", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> serviciosInactivos() {
+        List<Servicio> inactivos = servicioRepository.findByStatusFalse();
+        if (inactivos.isEmpty()) {
+            logger.warn("No hay servicios inactivos");
+            return new ResponseEntity<>(new Message(null, "No hay servicios inactivos", TypesResponse.WARNING), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new Message(inactivos, "Lista de servicios inactivos", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+
 }

@@ -43,4 +43,25 @@ public class ServicioController {
     public ResponseEntity<Message> actualizar(@Validated({ServicioDTO.Register.class, Default.class}) @RequestBody ServicioDTO servicioDTO) {
         return servicioServices.actualizarServicio(servicioDTO);
     }
+
+    @PutMapping("/desactivar/{id}")
+    public ResponseEntity<Message> desactivarServicio(@PathVariable Long id) {
+        return servicioServices.desactivarServicio(id);
+    }
+
+    @PutMapping("/activar/{id}")
+    public ResponseEntity<Message> activarServicio(@PathVariable Long id) {
+        return servicioServices.reactivarServicio(id);
+    }
+
+    @GetMapping("/activos")
+    public ResponseEntity<Message> listarServiciosActivos() {
+        return servicioServices.serviciosActivos();
+    }
+
+    @GetMapping("/inactivos")
+    public ResponseEntity<Message> listarServiciosInactivos() {
+        return servicioServices.serviciosInactivos();
+    }
+    
 }
