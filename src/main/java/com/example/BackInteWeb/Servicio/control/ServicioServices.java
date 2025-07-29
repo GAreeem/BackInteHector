@@ -58,6 +58,19 @@ public class ServicioServices {
         return new ResponseEntity<>(new Message(null, "Servicio no encontrado", TypesResponse.WARNING), HttpStatus.NOT_FOUND);
     }
 
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> listaServiciosPorCategoria(Long idCategoria) {
+        List<Servicio> servicios = servicioRepository.findByCategoria_IdCategoriaServicio(idCategoria);
+
+        if (servicios.isEmpty()) {
+            logger.warn("No se encontraron servicios para la categoría ID {}", idCategoria);
+            return new ResponseEntity<>(new Message(null, "No se encontraron servicios para esta categoría", TypesResponse.WARNING), HttpStatus.NOT_FOUND);
+        }
+
+        logger.info("Servicios encontrados para la categoría ID {}", idCategoria);
+        return new ResponseEntity<>(new Message(servicios, "Lista de servicios por categoría", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
     @Transactional(rollbackFor = SQLException.class)
     public ResponseEntity<Message> crearServicio(ServicioDTO dto) {
         if (servicioRepository.existsByNombre(dto.getNombre())) {
