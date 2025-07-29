@@ -29,6 +29,11 @@ public class ServicioController {
         return servicioServices.ServicioPorId(id);
     }
 
+    @GetMapping("/categoria/{idCategoria}")
+    public ResponseEntity<Message> findByCategoria(@PathVariable Long idCategoria) {
+        return servicioServices.listaServiciosPorCategoria(idCategoria);
+    }
+
     @PostMapping("/")
     public ResponseEntity<Message> crear(@Validated({ServicioDTO.Register.class, Default.class}) @RequestBody ServicioDTO servicioDTO) {
         return servicioServices.crearServicio(servicioDTO);

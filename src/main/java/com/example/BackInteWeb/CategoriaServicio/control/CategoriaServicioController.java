@@ -36,7 +36,7 @@ public class CategoriaServicioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Message> actualizarCategoria(@Validated({CategoriaServicioDTO.Register.class, Default.class}) @RequestBody CategoriaServicioDTO categoriaServicioDTO) {
+    public ResponseEntity<Message> actualizarCategoria(@Validated({CategoriaServicioDTO.Modify.class, Default.class}) @RequestBody CategoriaServicioDTO categoriaServicioDTO) {
         return categoriaServicioServices.actualizarCategoria(categoriaServicioDTO);
     }
     @DeleteMapping("/{id}")

@@ -93,16 +93,16 @@ public class CategoriaServicioServices {
     public ResponseEntity<Message> actualizarCategoria(CategoriaServicioDTO dto) {
         Optional<CategoriaServicio> categoriaOptional = categoriaRepository.findById(dto.getIdCategoriaServicio());
 
-        if (!categoriaOptional.isPresent()) {
-            return new ResponseEntity<>(new Message("El nombre de la categoria no existe",TypesResponse.ERROR),HttpStatus.NOT_FOUND);
+        if (categoriaOptional.isEmpty()) {
+            return new ResponseEntity<>(new Message("La categoría no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
 
-        if (categoriaRepository.existsByNombreAndIdCategoriaServicio(dto.getNombre(), dto.getIdCategoriaServicio())) {
-            logger.warn("El nombre '{}' ya está siendo utilizado", dto.getNombre());
-            return new ResponseEntity<>(new Message("La nueva categoria ya está registrada", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        if (categoriaRepository.existsByNombreAndIdCategoriaServicioNot(dto.getNombre(), dto.getIdCategoriaServicio())) {
+            logger.warn("El nombre '{}' ya está siendo utilizado por otra categoría", dto.getNombre());
+            return new ResponseEntity<>(new Message("El nombre ya está registrado en otra categoría", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        if (dto.getNombre().length() > 100 ||  dto.getDescripcion().length() > 200) {
+        if (dto.getNombre().length() > 100 || dto.getDescripcion().length() > 200) {
             logger.warn("Uno o más campos exceden el límite de caracteres");
             return new ResponseEntity<>(new Message("Uno o más campos exceden el límite de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
@@ -111,11 +111,9 @@ public class CategoriaServicioServices {
         categoriaServicio.setNombre(dto.getNombre());
         categoriaServicio.setDescripcion(dto.getDescripcion());
         categoriaRepository.saveAndFlush(categoriaServicio);
-        if (categoriaServicio == null) {
-            return new ResponseEntity<>(new Message("El juego no se actualizó",TypesResponse.ERROR),HttpStatus.BAD_REQUEST);
-        }
-        logger.info("La actualización ha sido realizada correctamente");
-        return new ResponseEntity<>(new Message(categoriaServicio,"La categoria de servicios se actualizó correctamente",TypesResponse.SUCCESS),HttpStatus.OK);
+
+        logger.info("La categoría con ID {} ha sido actualizada correctamente", dto.getIdCategoriaServicio());
+        return new ResponseEntity<>(new Message(categoriaServicio, "La categoría de servicios se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
     public boolean eliminar (Long id) {
