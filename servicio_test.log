@@ -399,3 +399,159 @@ jakarta.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not 
 2025-07-30T00:57:11.449-06:00  INFO 21528 --- [BackInteWeb] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-07-30T00:57:11.449-06:00  INFO 21528 --- [BackInteWeb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2025-07-30T00:57:11.457-06:00  INFO 21528 --- [BackInteWeb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2025-07-30T01:42:28.971-06:00  WARN 21528 --- [BackInteWeb] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m33s296ms161µs400ns).
+2025-07-30T02:35:02.794-06:00  INFO 21528 --- [BackInteWeb] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-30T02:35:02.815-06:00  INFO 21528 --- [BackInteWeb] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-30T02:35:02.845-06:00  INFO 21528 --- [BackInteWeb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-30T02:35:02.865-06:00  INFO 21528 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-30T02:35:02.871-06:00  INFO 21528 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-30T02:35:09.574-06:00  INFO 1224 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : Starting BackInteWebApplication using Java 21.0.8 with PID 1224 (C:\Users\oscar\OneDrive\Escritorio\RepoInteStamatio\BackInteHector\target\classes started by oscar in C:\Users\oscar\OneDrive\Escritorio\RepoInteStamatio\BackInteHector)
+2025-07-30T02:35:09.579-06:00  INFO 1224 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-07-30T02:35:10.936-06:00  INFO 1224 --- [BackInteWeb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-30T02:35:11.062-06:00  INFO 1224 --- [BackInteWeb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 5 JPA repository interfaces.
+2025-07-30T02:35:11.798-06:00  INFO 1224 --- [BackInteWeb] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-30T02:35:11.820-06:00  INFO 1224 --- [BackInteWeb] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-30T02:35:11.821-06:00  INFO 1224 --- [BackInteWeb] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-30T02:35:11.910-06:00  INFO 1224 --- [BackInteWeb] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-30T02:35:11.911-06:00  INFO 1224 --- [BackInteWeb] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2210 ms
+2025-07-30T02:35:12.128-06:00  INFO 1224 --- [BackInteWeb] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-30T02:35:12.232-06:00  INFO 1224 --- [BackInteWeb] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-30T02:35:12.285-06:00  INFO 1224 --- [BackInteWeb] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-30T02:35:12.721-06:00  INFO 1224 --- [BackInteWeb] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-30T02:35:12.776-06:00  INFO 1224 --- [BackInteWeb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-30T02:35:13.037-06:00  INFO 1224 --- [BackInteWeb] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@208f7165
+2025-07-30T02:35:13.040-06:00  INFO 1224 --- [BackInteWeb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-30T02:35:13.099-06:00  WARN 1224 --- [BackInteWeb] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-30T02:35:13.130-06:00  INFO 1224 --- [BackInteWeb] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-30T02:35:15.000-06:00  INFO 1224 --- [BackInteWeb] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-30T02:35:15.502-06:00  INFO 1224 --- [BackInteWeb] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-30T02:35:16.060-06:00  INFO 1224 --- [BackInteWeb] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-30T02:35:16.166-06:00  WARN 1224 --- [BackInteWeb] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-30T02:35:16.878-06:00  INFO 1224 --- [BackInteWeb] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-30T02:35:16.890-06:00  INFO 1224 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : Started BackInteWebApplication in 8.197 seconds (process running for 9.462)
+2025-07-30T02:35:36.677-06:00  INFO 1224 --- [BackInteWeb] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-30T02:35:36.677-06:00  INFO 1224 --- [BackInteWeb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-30T02:35:36.680-06:00  INFO 1224 --- [BackInteWeb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-07-30T02:39:36.677-06:00  INFO 1224 --- [BackInteWeb] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-30T02:39:36.690-06:00  INFO 1224 --- [BackInteWeb] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-30T02:39:36.694-06:00  INFO 1224 --- [BackInteWeb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-30T02:39:36.700-06:00  INFO 1224 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-30T02:39:36.706-06:00  INFO 1224 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-30T21:04:56.211-06:00  INFO 5152 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : Starting BackInteWebApplication using Java 21.0.8 with PID 5152 (C:\Users\oscar\OneDrive\Escritorio\RepoInteStamatio\BackInteHector\target\classes started by oscar in C:\Users\oscar\OneDrive\Escritorio\RepoInteStamatio\BackInteHector)
+2025-07-30T21:04:56.220-06:00  INFO 5152 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-07-30T21:05:01.494-06:00  INFO 5152 --- [BackInteWeb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-30T21:05:02.028-06:00  INFO 5152 --- [BackInteWeb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 473 ms. Found 5 JPA repository interfaces.
+2025-07-30T21:05:09.689-06:00  INFO 5152 --- [BackInteWeb] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-30T21:05:10.019-06:00  INFO 5152 --- [BackInteWeb] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-30T21:05:10.021-06:00  INFO 5152 --- [BackInteWeb] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-30T21:05:11.801-06:00  INFO 5152 --- [BackInteWeb] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-30T21:05:11.804-06:00  INFO 5152 --- [BackInteWeb] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 15327 ms
+2025-07-30T21:05:13.070-06:00  INFO 5152 --- [BackInteWeb] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-30T21:05:13.521-06:00  INFO 5152 --- [BackInteWeb] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-30T21:05:13.962-06:00  INFO 5152 --- [BackInteWeb] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-30T21:05:16.399-06:00  INFO 5152 --- [BackInteWeb] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-30T21:05:16.585-06:00  INFO 5152 --- [BackInteWeb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-30T21:05:17.380-06:00  INFO 5152 --- [BackInteWeb] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4e8d9bb6
+2025-07-30T21:05:17.391-06:00  INFO 5152 --- [BackInteWeb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-30T21:05:17.667-06:00  WARN 5152 --- [BackInteWeb] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-30T21:05:17.809-06:00  INFO 5152 --- [BackInteWeb] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-30T21:05:22.112-06:00  INFO 5152 --- [BackInteWeb] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-30T21:05:23.487-06:00  INFO 5152 --- [BackInteWeb] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-30T21:05:25.023-06:00  INFO 5152 --- [BackInteWeb] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-30T21:05:25.273-06:00  WARN 5152 --- [BackInteWeb] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-30T21:05:27.349-06:00  INFO 5152 --- [BackInteWeb] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-30T21:05:27.375-06:00  INFO 5152 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : Started BackInteWebApplication in 34.367 seconds (process running for 38.631)
+2025-07-30T21:34:05.158-06:00  INFO 5152 --- [BackInteWeb] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-30T21:34:05.201-06:00  INFO 5152 --- [BackInteWeb] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-30T21:34:05.250-06:00  INFO 5152 --- [BackInteWeb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-30T21:34:05.336-06:00  INFO 5152 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-30T21:34:05.374-06:00  INFO 5152 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-30T21:34:15.124-06:00  INFO 1924 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : Starting BackInteWebApplication using Java 21.0.8 with PID 1924 (C:\Users\oscar\OneDrive\Escritorio\RepoInteStamatio\BackInteHector\target\classes started by oscar in C:\Users\oscar\OneDrive\Escritorio\RepoInteStamatio\BackInteHector)
+2025-07-30T21:34:15.128-06:00  INFO 1924 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-07-30T21:34:16.855-06:00  INFO 1924 --- [BackInteWeb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-30T21:34:17.109-06:00  INFO 1924 --- [BackInteWeb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 236 ms. Found 5 JPA repository interfaces.
+2025-07-30T21:34:18.519-06:00  INFO 1924 --- [BackInteWeb] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-30T21:34:18.548-06:00  INFO 1924 --- [BackInteWeb] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-30T21:34:18.548-06:00  INFO 1924 --- [BackInteWeb] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-30T21:34:18.679-06:00  INFO 1924 --- [BackInteWeb] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-30T21:34:18.680-06:00  INFO 1924 --- [BackInteWeb] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3427 ms
+2025-07-30T21:34:19.089-06:00  INFO 1924 --- [BackInteWeb] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-30T21:34:19.216-06:00  INFO 1924 --- [BackInteWeb] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-30T21:34:19.288-06:00  INFO 1924 --- [BackInteWeb] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-30T21:34:20.023-06:00  INFO 1924 --- [BackInteWeb] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-30T21:34:20.107-06:00  INFO 1924 --- [BackInteWeb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-30T21:34:20.508-06:00  INFO 1924 --- [BackInteWeb] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@550fa96f
+2025-07-30T21:34:20.513-06:00  INFO 1924 --- [BackInteWeb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-30T21:34:20.589-06:00  WARN 1924 --- [BackInteWeb] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-30T21:34:20.641-06:00  INFO 1924 --- [BackInteWeb] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-30T21:34:23.020-06:00  INFO 1924 --- [BackInteWeb] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-30T21:34:23.670-06:00  INFO 1924 --- [BackInteWeb] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-30T21:34:24.650-06:00  INFO 1924 --- [BackInteWeb] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-30T21:34:24.801-06:00  WARN 1924 --- [BackInteWeb] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-30T21:34:26.113-06:00  INFO 1924 --- [BackInteWeb] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-30T21:34:26.137-06:00  INFO 1924 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : Started BackInteWebApplication in 12.095 seconds (process running for 13.688)
+2025-07-30T21:35:19.836-06:00  INFO 1924 --- [BackInteWeb] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-30T21:35:19.836-06:00  INFO 1924 --- [BackInteWeb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-30T21:35:19.841-06:00  INFO 1924 --- [BackInteWeb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-07-30T21:37:08.858-06:00  WARN 1924 --- [BackInteWeb] [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'request' for method parameter type ResetPasswordRequest is not present]
+2025-07-30T21:38:41.298-06:00  WARN 1924 --- [BackInteWeb] [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'request' for method parameter type ResetPasswordRequest is not present]
+2025-07-30T21:43:51.637-06:00  INFO 1924 --- [BackInteWeb] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-30T21:43:51.659-06:00  INFO 1924 --- [BackInteWeb] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-30T21:43:51.673-06:00  INFO 1924 --- [BackInteWeb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-30T21:43:51.680-06:00  INFO 1924 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-30T21:43:51.698-06:00  INFO 1924 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-07-30T21:44:02.113-06:00  INFO 4452 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : Starting BackInteWebApplication using Java 21.0.8 with PID 4452 (C:\Users\oscar\OneDrive\Escritorio\RepoInteStamatio\BackInteHector\target\classes started by oscar in C:\Users\oscar\OneDrive\Escritorio\RepoInteStamatio\BackInteHector)
+2025-07-30T21:44:02.117-06:00  INFO 4452 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-07-30T21:44:04.254-06:00  INFO 4452 --- [BackInteWeb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-30T21:44:04.488-06:00  INFO 4452 --- [BackInteWeb] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 212 ms. Found 5 JPA repository interfaces.
+2025-07-30T21:44:05.900-06:00  INFO 4452 --- [BackInteWeb] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-30T21:44:05.930-06:00  INFO 4452 --- [BackInteWeb] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-30T21:44:05.931-06:00  INFO 4452 --- [BackInteWeb] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-30T21:44:06.044-06:00  INFO 4452 --- [BackInteWeb] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-30T21:44:06.045-06:00  INFO 4452 --- [BackInteWeb] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3772 ms
+2025-07-30T21:44:06.425-06:00  INFO 4452 --- [BackInteWeb] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-30T21:44:06.618-06:00  INFO 4452 --- [BackInteWeb] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-30T21:44:06.722-06:00  INFO 4452 --- [BackInteWeb] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-30T21:44:07.503-06:00  INFO 4452 --- [BackInteWeb] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-30T21:44:07.584-06:00  INFO 4452 --- [BackInteWeb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-07-30T21:44:08.049-06:00  INFO 4452 --- [BackInteWeb] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@44492c06
+2025-07-30T21:44:08.052-06:00  INFO 4452 --- [BackInteWeb] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-07-30T21:44:08.138-06:00  WARN 4452 --- [BackInteWeb] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-30T21:44:08.190-06:00  INFO 4452 --- [BackInteWeb] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-30T21:44:10.500-06:00  INFO 4452 --- [BackInteWeb] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-30T21:44:11.233-06:00  INFO 4452 --- [BackInteWeb] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-30T21:44:12.299-06:00  INFO 4452 --- [BackInteWeb] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-30T21:44:12.458-06:00  WARN 4452 --- [BackInteWeb] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-30T21:44:13.412-06:00  INFO 4452 --- [BackInteWeb] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-30T21:44:13.426-06:00  INFO 4452 --- [BackInteWeb] [main] c.e.BackInteWeb.BackInteWebApplication   : Started BackInteWebApplication in 12.482 seconds (process running for 14.337)
+2025-07-30T21:44:21.366-06:00  INFO 4452 --- [BackInteWeb] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-30T21:44:21.368-06:00  INFO 4452 --- [BackInteWeb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-30T21:44:21.370-06:00  INFO 4452 --- [BackInteWeb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

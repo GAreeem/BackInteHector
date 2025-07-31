@@ -12,7 +12,7 @@ public class EmailService {
 
     public void sendResetPasswordEmail(String toEmail, String token) {
         try {
-            String resetUrl = "http://localhost:4200/reset-password?token=" + token;
+            String resetUrl = "http://localhost:5173/restablecer-contrasena/" + token;
 
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(toEmail);

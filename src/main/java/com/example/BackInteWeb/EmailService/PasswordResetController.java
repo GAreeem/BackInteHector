@@ -41,20 +41,19 @@ public class PasswordResetController {
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<?> resetPassword(@RequestParam String token, @RequestParam String newPassword) {
-        if (!jwtUtil.validateToken(token)) {
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest request) {
+        if (!jwtUtil.validateToken(request.getToken())) {
             return ResponseEntity.badRequest().body("Token invalido o expirado");
         }
 
-        String email = jwtUtil.getEmailFromToken(token);
+        String email = jwtUtil.getEmailFromToken(request.getToken());
         Optional<Usuario> optionalUsuario = usuarioRepository.findByEmail(email);
         if (optionalUsuario.isEmpty()) {
             return ResponseEntity.badRequest().body("Usuario no encontrado");
         }
 
         Usuario usuario = optionalUsuario.get();
-
-        usuario.setPassword(passwordEncoder.encode(newPassword));
+        usuario.setPassword(passwordEncoder.encode(request.getNewPassword()));
         usuarioRepository.save(usuario);
 
         return ResponseEntity.ok("Contraseña actualizada");
