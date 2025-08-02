@@ -2,11 +2,15 @@ package com.example.BackInteWeb.Servicio.control;
 
 import com.example.BackInteWeb.CategoriaServicio.model.CategoriaRepository;
 import com.example.BackInteWeb.CategoriaServicio.model.CategoriaServicio;
+import com.example.BackInteWeb.CategoriaServicio.model.ServicioRegistroRequest;
 import com.example.BackInteWeb.Servicio.model.Servicio;
 import com.example.BackInteWeb.Servicio.model.ServicioDTO;
 import com.example.BackInteWeb.Servicio.model.ServicioRepository;
+import com.example.BackInteWeb.config.CloudinaryConfig;
+import com.example.BackInteWeb.config.CloudinaryService;
 import com.example.BackInteWeb.utils.Message;
 import com.example.BackInteWeb.utils.TypesResponse;
+import jakarta.mail.Multipart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +33,9 @@ public class ServicioServices {
 
     private final ServicioRepository servicioRepository;
     private final CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private CloudinaryService cloudinaryService;
 
     @Autowired
     public ServicioServices(ServicioRepository servicioRepository,  CategoriaRepository categoriaRepository) {
@@ -72,7 +81,7 @@ public class ServicioServices {
     }
 
     @Transactional(rollbackFor = SQLException.class)
-    public ResponseEntity<Message> crearServicio(ServicioDTO dto) {
+    public ResponseEntity<Message> crearServicio(ServicioRegistroRequest dto, MultipartFile imagen) {
         if (servicioRepository.existsByNombre(dto.getNombre())) {
             logger.warn("El servicio con nombre '{}' ya existe", dto.getNombre());
             return new ResponseEntity<>(new Message("El nombre ya está registrado", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -89,6 +98,14 @@ public class ServicioServices {
             return new ResponseEntity<>(new Message("Categoría no válida", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
         }
 
+        String imagenUrl = null;
+        try {
+            imagenUrl = cloudinaryService.uploadFile(imagen);
+        } catch (IOException e) {
+            logger.error("Error al subir imagen a Cloudinary", e);
+            return new ResponseEntity<>(new Message("Error al subir imagen", TypesResponse.ERROR), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
         Servicio servicio = new Servicio(
                 dto.getNombre(),
                 dto.getDescripcion(),
@@ -96,6 +113,7 @@ public class ServicioServices {
                 false,
                 categoria.get()
         );
+        servicio.setImagenUrl(imagenUrl);
 
         servicio = servicioRepository.saveAndFlush(servicio);
         logger.info("Servicio registrado exitosamente");

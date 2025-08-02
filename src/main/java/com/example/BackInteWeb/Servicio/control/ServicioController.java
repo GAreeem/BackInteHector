@@ -1,12 +1,15 @@
 package com.example.BackInteWeb.Servicio.control;
 
+import com.example.BackInteWeb.CategoriaServicio.model.ServicioRegistroRequest;
 import com.example.BackInteWeb.Servicio.model.ServicioDTO;
 import com.example.BackInteWeb.utils.Message;
 import jakarta.validation.groups.Default;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/servicio")
@@ -34,9 +37,13 @@ public class ServicioController {
         return servicioServices.listaServiciosPorCategoria(idCategoria);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<Message> crear(@Validated({ServicioDTO.Register.class, Default.class}) @RequestBody ServicioDTO servicioDTO) {
-        return servicioServices.crearServicio(servicioDTO);
+//    @PostMapping("/")
+//    public ResponseEntity<Message> crear(@Validated({ServicioDTO.Register.class, Default.class}) @RequestBody ServicioDTO servicioDTO) {
+//        return servicioServices.crearServicio(servicioDTO);
+
+    @PostMapping(value = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Message> crear(@Validated @RequestPart("datos")ServicioRegistroRequest datos, @RequestPart("imagen")MultipartFile imagen) {
+        return servicioServices.crearServicio(datos, imagen);
     }
 
     @PutMapping("/{id}")

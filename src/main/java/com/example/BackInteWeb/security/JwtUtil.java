@@ -26,6 +26,17 @@ public class JwtUtil {
                 .compact();
     }
 
+    public String generatePasswordResetToken(String email) {
+        long resetTokenExpirationMs = 5 * 60 * 1000;
+
+        return Jwts.builder()
+                .setSubject(email)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + resetTokenExpirationMs))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
     public String getEmailFromToken(String token) {
         return Jwts.parserBuilder().setSigningKey(getSigningKey()).build()
                 .parseClaimsJws(token).getBody().getSubject();

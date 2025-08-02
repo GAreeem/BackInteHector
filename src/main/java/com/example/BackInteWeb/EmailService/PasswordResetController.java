@@ -8,10 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/reset-password")
+@RequestMapping("/auth")
 public class PasswordResetController {
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -26,33 +27,33 @@ public class PasswordResetController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/forgot-password")
-    public ResponseEntity<?> forgotPassword(@RequestParam String email) {
+    public ResponseEntity<?> forgotPassword(@RequestBody Map<String, String> body) {
+        String email = body.get("email");
         Optional<Usuario> optionalUsuario = usuarioRepository.findByEmail(email);
         if (optionalUsuario.isEmpty()) {
             return ResponseEntity.badRequest().body("El correo no está registrado");
         }
 
-        String token = jwtUtil.generateToken(email);
+        String token = jwtUtil.generatePasswordResetToken(email);
         emailService.sendResetPasswordEmail(email, token);
 
         return ResponseEntity.ok("Corre enviado");
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<?> resetPassword(@RequestParam String token, @RequestParam String newPassword) {
-        if (!jwtUtil.validateToken(token)) {
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest request) {
+        if (!jwtUtil.validateToken(request.getToken())) {
             return ResponseEntity.badRequest().body("Token invalido o expirado");
         }
 
-        String email = jwtUtil.getEmailFromToken(token);
+        String email = jwtUtil.getEmailFromToken(request.getToken());
         Optional<Usuario> optionalUsuario = usuarioRepository.findByEmail(email);
         if (optionalUsuario.isEmpty()) {
             return ResponseEntity.badRequest().body("Usuario no encontrado");
         }
 
         Usuario usuario = optionalUsuario.get();
-
-        usuario.setPassword(passwordEncoder.encode(newPassword));
+        usuario.setPassword(passwordEncoder.encode(request.getNewPassword()));
         usuarioRepository.save(usuario);
 
         return ResponseEntity.ok("Contraseña actualizada");

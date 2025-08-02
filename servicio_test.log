@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2025-07-13T01:07:15.624-06:00  INFO 17936 --- [BackInteWeb] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
 2025-07-13T01:07:15.651-06:00  INFO 17936 --- [BackInteWeb] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
 2025-07-13T01:07:15.660-06:00  INFO 17936 --- [BackInteWeb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
@@ -1946,3 +1947,11 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2025-07-15T22:37:29Z. Curren
 2025-07-28T18:24:43.817-06:00  INFO 6368 --- [BackInteWeb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-07-28T18:24:43.819-06:00  INFO 6368 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-07-28T18:24:43.835-06:00  INFO 6368 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+=======
+2025-07-31T01:03:47.548-06:00  WARN 4452 --- [BackInteWeb] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=29m56s463ms571µs800ns).
+2025-07-31T02:18:01.723-06:00  INFO 4452 --- [BackInteWeb] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-31T02:18:01.771-06:00  INFO 4452 --- [BackInteWeb] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-31T02:18:01.959-06:00  INFO 4452 --- [BackInteWeb] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-31T02:18:02.022-06:00  INFO 4452 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-31T02:18:02.076-06:00  INFO 4452 --- [BackInteWeb] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+>>>>>>> TekinisBranch

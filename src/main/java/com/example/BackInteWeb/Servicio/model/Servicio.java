@@ -22,6 +22,9 @@ public class Servicio {
     @Column(name = "status", columnDefinition = "BOOLEAN DEFAULT TRUE")
     private boolean status;
 
+    @Column(name = "imagen_url", columnDefinition = "TEXT")
+    private String imagenUrl;
+
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private CategoriaServicio categoria;
@@ -83,6 +86,14 @@ public class Servicio {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 
     public CategoriaServicio getCategoria() {
