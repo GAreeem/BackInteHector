@@ -64,10 +64,10 @@ public class ReservacionServices {
     @Transactional(rollbackFor = SQLException.class)
     public ResponseEntity<Message> crearReservacion(ReservacionDTO dto) {
 
-        if (reservacionRepository.existsByNombre(dto.getNombre())) {
-            logger.warn("El servicio con nombre '{}' ya existe", dto.getNombre());
-            return new ResponseEntity<>(new Message("El nombre ya está registrado", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
-        }
+        //if (reservacionRepository.existsByNombre(dto.getNombre())) {
+        //    logger.warn("El servicio con nombre '{}' ya existe", dto.getNombre());
+        //    return new ResponseEntity<>(new Message("El nombre ya está registrado", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        //}
 
         if (dto.getNombre().length() > 100 || dto.getDescripcion().length() > 200) {
             logger.warn("Uno o más campos exceden el límite de caracteres");
@@ -91,7 +91,8 @@ public class ReservacionServices {
                 dto.getDescripcion(),
                 true,
                 servicio.get(),
-                usuario.get()
+                usuario.get(),
+                dto.getReservationDate()
         );
 
         reservacion = reservacionRepository.saveAndFlush(reservacion);

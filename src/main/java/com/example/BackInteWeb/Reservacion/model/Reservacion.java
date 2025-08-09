@@ -30,19 +30,20 @@ public class Reservacion {
     @JoinColumn(name = "id_user")
     private Usuario usuario;
 
-    @Column(name = "reservation_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "reservation_date", columnDefinition = "DATETIME")
     private LocalDateTime reservationDate;
 
     public Reservacion() {}
 
-    public Reservacion(String nombre, String descripcion, boolean status, Servicio servicio, Usuario usuario) {
+    public Reservacion(String nombre, String descripcion, Boolean status, Servicio servicio, Usuario usuario, LocalDateTime reservationDate) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.status = status;
         this.servicio = servicio;
         this.usuario = usuario;
-        this.reservationDate = LocalDateTime.now();
+        this.reservationDate = reservationDate;
     }
+
     public Reservacion(Long idReservacion, String nombre, String descripcion, boolean status, Servicio servicio, Usuario usuario) {
         this.idReservacion = idReservacion;
         this.nombre = nombre;
