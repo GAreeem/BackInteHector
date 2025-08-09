@@ -69,15 +69,21 @@ public class ServicioServices {
 
     @Transactional(readOnly = true)
     public ResponseEntity<Message> listaServiciosPorCategoria(Long idCategoria) {
-        List<Servicio> servicios = servicioRepository.findByCategoria_IdCategoriaServicio(idCategoria);
+        List<Servicio> servicios = servicioRepository.findByCategoria_IdCategoriaServicioAndStatusTrue(idCategoria);
 
         if (servicios.isEmpty()) {
-            logger.warn("No se encontraron servicios para la categoría ID {}", idCategoria);
-            return new ResponseEntity<>(new Message(null, "No se encontraron servicios para esta categoría", TypesResponse.WARNING), HttpStatus.NOT_FOUND);
+            logger.warn("No se encontraron servicios activos para la categoría ID {}", idCategoria);
+            return new ResponseEntity<>(
+                    new Message(null, "No se encontraron servicios activos para esta categoría", TypesResponse.WARNING),
+                    HttpStatus.NOT_FOUND
+            );
         }
 
-        logger.info("Servicios encontrados para la categoría ID {}", idCategoria);
-        return new ResponseEntity<>(new Message(servicios, "Lista de servicios por categoría", TypesResponse.SUCCESS), HttpStatus.OK);
+        logger.info("Servicios activos encontrados para la categoría ID {}", idCategoria);
+        return new ResponseEntity<>(
+                new Message(servicios, "Lista de servicios activos por categoría", TypesResponse.SUCCESS),
+                HttpStatus.OK
+        );
     }
 
     @Transactional(rollbackFor = SQLException.class)
