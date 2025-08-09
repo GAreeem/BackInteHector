@@ -26,7 +26,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
         try {
-            Authentication authentication = authManager.authenticate(
+            authManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
@@ -42,9 +42,19 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
         }
 
-        String rol = usuario.getRol().getRol();
+        // Construir el DTO sin password
+        UsuarioLoginDto usuarioDTO = new UsuarioLoginDto(
+                usuario.getIdUser(),
+                usuario.getNombre(),
+                usuario.getApellidoP(),
+                usuario.getApellidoM(),
+                usuario.getEmail(),
+                usuario.getTelefono(),
+                usuario.isStatus(),
+                usuario.getRol()
+        );
 
-        return ResponseEntity.ok(new AuthResponse(token, rol));
+        return ResponseEntity.ok(new AuthResponse(token, usuarioDTO));
     }
 
     @PostMapping("/logout")

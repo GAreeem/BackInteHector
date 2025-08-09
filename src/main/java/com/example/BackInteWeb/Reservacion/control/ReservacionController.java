@@ -38,4 +38,9 @@ public class ReservacionController {
     public ResponseEntity<Message> actualizar(@Validated({ReservacionDTO.Register.class, Default.class}) @RequestBody ReservacionDTO reservacionDTO) {
         return reservacionServices.actualizarReservacion(reservacionDTO);
     }
+
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<Message> obtenerPorUsuario(@PathVariable Long idUsuario) {
+        return reservacionServices.obtenerReservacionesPorUsuario(idUsuario);
+    }
 }

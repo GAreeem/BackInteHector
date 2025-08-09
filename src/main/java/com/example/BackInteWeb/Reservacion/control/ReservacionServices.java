@@ -100,6 +100,19 @@ public class ReservacionServices {
         return new ResponseEntity<>(new Message(reservacion, "Reservación creada correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
     }
 
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> obtenerReservacionesPorUsuario(Long idUsuario) {
+        if (!usuarioRepository.existsById(idUsuario)) {
+            logger.warn("Usuario con ID {} no encontrado", idUsuario);
+            return new ResponseEntity<>(new Message("Usuario no encontrado", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+
+        List<Reservacion> reservaciones = reservacionRepository.findByUsuarioIdUser(idUsuario);
+        logger.info("Se encontraron {} reservaciones para el usuario con ID {}", reservaciones.size(), idUsuario);
+        return new ResponseEntity<>(new Message(reservaciones, "Reservaciones obtenidas correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> actualizarReservacion(ReservacionDTO dto) {
         Optional<Reservacion> reservacionOptional = reservacionRepository.findById(dto.getIdReservacion());

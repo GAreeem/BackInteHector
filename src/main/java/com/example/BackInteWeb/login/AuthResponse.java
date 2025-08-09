@@ -2,19 +2,19 @@ package com.example.BackInteWeb.login;
 
 public class AuthResponse {
     private String token;
-    private String rol;
+    private UsuarioLoginDto usuario;
 
-    public AuthResponse(String token, String rol) {
+    public AuthResponse(String token, UsuarioLoginDto usuario) {
         this.token = token;
-        this.rol = rol;
+        this.usuario = usuario;
     }
 
     public String getToken() {
         return token;
     }
 
-    public String getRol() {
-        return rol;
+    public UsuarioLoginDto getUsuario() {
+        return usuario;
     }
 }
 
