@@ -47,8 +47,9 @@ public class ServicioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Message> actualizar(@Validated({ServicioDTO.Register.class, Default.class}) @RequestBody ServicioDTO servicioDTO) {
-        return servicioServices.actualizarServicio(servicioDTO);
+    public ResponseEntity<Message> actualizar(@Validated({ServicioDTO.Register.class, Default.class}) @PathVariable Long id, @ModelAttribute ServicioDTO servicioDTO, @RequestParam(value = "archivo", required = false) MultipartFile archivo) {
+        servicioDTO.setIdServicio(id);
+        return servicioServices.actualizarServicio(servicioDTO, archivo);
     }
 
     @PutMapping("/desactivar/{id}")

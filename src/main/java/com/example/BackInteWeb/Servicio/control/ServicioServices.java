@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Transactional
@@ -127,7 +128,7 @@ public class ServicioServices {
     }
 
     @Transactional(rollbackFor = SQLException.class)
-    public ResponseEntity<Message> actualizarServicio(ServicioDTO dto) {
+    public ResponseEntity<Message> actualizarServicio(ServicioDTO dto, MultipartFile archivo) {
         Optional<Servicio> servicioOptional = servicioRepository.findById(dto.getIdServicio());
 
         if (servicioOptional.isEmpty()) {
@@ -156,6 +157,17 @@ public class ServicioServices {
         servicio.setDescripcion(dto.getDescripcion());
         servicio.setPrecio(dto.getPrecio());
         servicio.setCategoria(categoria.get());
+
+        if (archivo != null && !archivo.isEmpty()) {
+            try {
+                String urlImagen = cloudinaryService.uploadFile(archivo);
+                servicio.setImagenUrl(urlImagen);
+                dto.setImagenUrl(urlImagen);
+            } catch (IOException e) {
+                logger.error("Error al subir la imagen a Cloudinary", e);
+                return new ResponseEntity<>(new Message("Error al subir la imagen", TypesResponse.ERROR), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
 
         servicioRepository.saveAndFlush(servicio);
         logger.info("Servicio con ID {} actualizado correctamente", dto.getIdServicio());

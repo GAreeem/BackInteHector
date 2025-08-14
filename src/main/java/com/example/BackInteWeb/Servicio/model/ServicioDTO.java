@@ -25,6 +25,9 @@ public class ServicioDTO {
     @NotNull(message = "El ID de categoria es obligatorio", groups = {Register.class})
     private Long idCategoria;
 
+    @NotBlank(message = "La imagen debe tener una url valida", groups = {Register.class, Modify.class})
+    private String imagenUrl;
+
     public ServicioDTO() {
     }
 
@@ -66,6 +69,14 @@ public class ServicioDTO {
 
     public void setIdCategoria(Long idCategoria) {
         this.idCategoria = idCategoria;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 
     public interface Register{}
