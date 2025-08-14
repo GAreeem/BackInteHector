@@ -43,4 +43,10 @@ public class ReservacionController {
     public ResponseEntity<Message> obtenerPorUsuario(@PathVariable Long idUsuario) {
         return reservacionServices.obtenerReservacionesPorUsuario(idUsuario);
     }
+
+    @DeleteMapping("/cancelar/{id}")
+    public ResponseEntity<Message> cancelarReservacion(@PathVariable Long id) {
+        return reservacionServices.cancelarReservacion(id);
+    }
+
 }

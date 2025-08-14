@@ -155,4 +155,29 @@ public class ReservacionServices {
         logger.info("Reservación con ID {} actualizada correctamente", dto.getIdReservacion());
         return new ResponseEntity<>(new Message(reservacion, "Reservación actualizada correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
+
+    @Transactional(rollbackFor = {SQLException.class})
+    public ResponseEntity<Message> cancelarReservacion(Long idReservacion) {
+        Optional<Reservacion> reservacionOptional = reservacionRepository.findById(idReservacion);
+
+        if (reservacionOptional.isEmpty()) {
+            logger.warn("Reservación con ID {} no encontrada", idReservacion);
+            return new ResponseEntity<>(new Message("Reservación no encontrada", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+
+        Reservacion reservacion = reservacionOptional.get();
+
+        // Verificar si ya está cancelada
+        if (!reservacion.isStatus()) {
+            logger.warn("Reservación con ID {} ya está cancelada", idReservacion);
+            return new ResponseEntity<>(new Message("La reservación ya está cancelada", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+        // Cambiar el estado a cancelado (false)
+        reservacion.setStatus(false);
+        reservacionRepository.saveAndFlush(reservacion);
+
+        logger.info("Reservación con ID {} cancelada correctamente", idReservacion);
+        return new ResponseEntity<>(new Message(reservacion, "Reservación cancelada correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
 }
