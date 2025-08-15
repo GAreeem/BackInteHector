@@ -93,16 +93,11 @@ public class UsuarioService {
 
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> actualizar(UsuarioDTO dto) {
-        Optional<Usuario> optionalUsuario  = usuarioRepository.findById(dto.getIdUser());
+        Optional<Usuario> optionalUsuario = usuarioRepository.findById(dto.getIdUser());
 
         if (optionalUsuario.isEmpty()) {
             logger.warn("Usuario con ID {} no encontrado", dto.getIdUser());
             return new ResponseEntity<>(new Message("Usuario no encontrado", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
-        }
-
-        if (dto.getPassword().length() < 8 || dto.getPassword().length() > 16) {
-            logger.warn("La contraseña debe tener minimo 8 caracteres o maximo 16 caracteres");
-            return new ResponseEntity<>(new Message("La contraseña debe tener minimo 8 caracteres o maximo 16 caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
         Usuario usuario = optionalUsuario.get();
@@ -121,16 +116,19 @@ public class UsuarioService {
         usuario.setNombre(dto.getNombre());
         usuario.setApellidoP(dto.getApellidoP());
         usuario.setApellidoM(dto.getApellidoM());
-        usuario.setEmail(dto.getEmail());
         usuario.setTelefono(dto.getTelefono());
-        usuario.setPassword(dto.getPassword());
         usuario.setRol(rol.get());
+
+        // Solo actualizar password si viene en el DTO y no está vacío
+        if (dto.getPassword() != null && !dto.getPassword().isBlank()) {
+            usuario.setPassword(dto.getPassword());
+        }
 
         usuarioRepository.saveAndFlush(usuario);
         logger.info("Usuario con ID {} actualizado correctamente", dto.getIdUser());
         return new ResponseEntity<>(new Message(usuario, "Usuario actualizado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
-
     }
+
 
     public boolean eliminar(Long id) {
         Usuario usuario = usuarioRepository.findById(id).orElse(null);

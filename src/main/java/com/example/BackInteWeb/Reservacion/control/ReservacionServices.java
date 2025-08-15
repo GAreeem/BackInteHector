@@ -127,7 +127,7 @@ public class ReservacionServices {
             return new ResponseEntity<>(new Message("El nombre ya está registrado", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        if (dto.getNombre().length() > 100 || dto.getDescripcion().length() > 200) {
+        if (dto.getNombre().length() > 100 || dto.getDescripcion().length() > 300) {
             logger.warn("Uno o más campos exceden el límite de caracteres");
             return new ResponseEntity<>(new Message("Uno o más campos exceden el límite de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }

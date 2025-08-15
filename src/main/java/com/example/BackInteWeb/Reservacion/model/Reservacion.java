@@ -30,7 +30,7 @@ public class Reservacion {
     @JoinColumn(name = "id_user")
     private Usuario usuario;
 
-    @Column(name = "reservation_date", columnDefinition = "DATETIME")
+    @Column(name = "reservation_date")
     private LocalDateTime reservationDate;
 
     public Reservacion() {}

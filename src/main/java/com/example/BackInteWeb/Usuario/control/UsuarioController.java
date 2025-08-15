@@ -35,9 +35,15 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Message> actualizar(@Validated({UsuarioDTO.Register.class, Default.class}) @RequestBody UsuarioDTO usuarioDTO) {
+    public ResponseEntity<Message> actualizar(
+            @PathVariable Long id,
+            @Validated({UsuarioDTO.Modify.class, Default.class})
+            @RequestBody UsuarioDTO usuarioDTO
+    ) {
+        usuarioDTO.setIdUser(id); // asegurar que el id venga correcto
         return usuarioService.actualizar(usuarioDTO);
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
